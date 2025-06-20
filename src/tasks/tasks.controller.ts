@@ -1,22 +1,27 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { TasksService } from './tasks.service';
+import { CreateUserDto } from './application/dto/createUser.dto';
 
 @Controller('tasks')
 export class TasksController {
-  constructor(private readonly tasksService: TasksService) {}
+  tasks: any;
+  constructor(private readonly tasksService: TasksService) { }
 
   @Post()
-  create() {
-    return this.tasksService.create();
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.tasksService.create(createUserDto);
   }
 
-  @Get()
+  @Get('/return-tasks')
   findAll() {
+    console.log('Tasks armazenadas:', this.tasks);
     return this.tasksService.findAll();
   }
 
   @Get(':id')
-  findOne() {
-    return this.tasksService.findOne();
+  findOne(@Param('id') id: string) {
+    console.log('Received ID:', id);
+
+    return this.tasksService.findOne(id);
   }
 }
