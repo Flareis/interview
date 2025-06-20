@@ -57,3 +57,7 @@ Boa sorte e divirta-se! 🎉
 ---
 
 _"O código é poesia em movimento"_ ✨
+
+### 🎨 Testes Locais via Postman
+
+Faça o import deste arquivo: [Collection Tasks on PostMan](Tasks.postman_collection.json) para realizar os testes  manuais de integração via PostMan.
